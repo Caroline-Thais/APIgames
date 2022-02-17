@@ -35,6 +35,16 @@ app.get("/games", (req, res) => {
     res.json(DB.games);
 });
 
+app.get("/game/:id", (req, res) => {
+
+    if(isNaN(req.params.id)){
+        res.sendStatus(400);
+    }else{
+
+        var id = parseInt(req.params.id);
+    }
+})
+
 
 
 app.listen(8085, () => {
