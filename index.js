@@ -42,8 +42,30 @@ app.get("/game/:id", (req, res) => {
     }else{
 
         var id = parseInt(req.params.id);
+        var game = DB.games.find(games => games.id == id);
+        
+        if(game != undefined){
+            res.statusCode = 200;
+            res.json(game);
+        }else{
+            res.sendStatus(404);
+        }
     }
-})
+});
+
+app.post("/game", (req, res) => {
+    
+    var {title, price, year } = req.body;
+
+    DB.games.push({
+        id: 34,
+        title,
+        price,
+        year
+    });
+
+    res.sendStatus(200);
+});
 
 
 
